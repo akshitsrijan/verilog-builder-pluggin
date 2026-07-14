@@ -1,6 +1,6 @@
 ---
 description: Inspect a blocked build's error and fix it by prompt, then resume
-argument-hint: [project-path-or-name] [optional: instructions for the fix]
+argument-hint: "[project-path-or-name] [optional: instructions for the fix]"
 ---
 
 Arguments: `$ARGUMENTS` (project path/name, optionally followed by fix instructions)

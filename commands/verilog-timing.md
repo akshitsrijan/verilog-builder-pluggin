@@ -1,6 +1,6 @@
 ---
 description: Show the timing analysis (WNS/TNS/WHS/THS) for a project's most recent build
-argument-hint: [project-path-or-name]
+argument-hint: "[project-path-or-name]"
 ---
 
 Project argument: `$ARGUMENTS`

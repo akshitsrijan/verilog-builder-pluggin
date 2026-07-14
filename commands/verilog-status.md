@@ -1,6 +1,6 @@
 ---
 description: Show the current status of a Vivado build without starting or resuming anything
-argument-hint: [project-path-or-name]
+argument-hint: "[project-path-or-name]"
 ---
 
 Project argument: `$ARGUMENTS`

@@ -1,5 +1,6 @@
 {
   "name": "verilog-builder-marketplace",
+  "description": "Marketplace hosting the verilog-builder plugin for module-by-module Vivado synthesis with live progress and timing analysis.",
   "owner": {
     "name": "Akshit Srijan",
     "email": "akshit.srijan@gmail.com"

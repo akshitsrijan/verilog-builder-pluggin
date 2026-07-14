@@ -1,6 +1,6 @@
 ---
 description: Build a Vivado project module-by-module with live progress, timing analysis, and pause-to-fix on errors
-argument-hint: [project-path-or-name]
+argument-hint: "[project-path-or-name]"
 ---
 
 Drive a full build of a Vivado project using the verilog-builder MCP tools.
