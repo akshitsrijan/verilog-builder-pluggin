@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "verilog-builder": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/mcp_server/venv/bin/python",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp_server/server.py"],
+      "env": {
+        "VIVADO_BIN": "/home/vboxuser/Downloads/Xilinx/Vivado/2023.2/bin/vivado"
+      }
+    }
+  }
+}

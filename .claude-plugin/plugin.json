@@ -1,0 +1,12 @@
+{
+  "name": "verilog-builder",
+  "version": "0.1.0",
+  "description": "Drives Vivado synthesis module-by-module, streams live progress and timing analysis, and lets you fix errors by prompting mid-build.",
+  "author": {
+    "name": "Akshit Srijan",
+    "email": "akshit.srijan@gmail.com"
+  },
+  "keywords": ["verilog", "fpga", "vivado", "synthesis", "timing-analysis", "hardware"],
+  "commands": "./commands",
+  "mcpServers": "./.mcp.json"
+}

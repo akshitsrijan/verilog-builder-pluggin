@@ -1,0 +1,15 @@
+{
+  "name": "verilog-builder-marketplace",
+  "owner": {
+    "name": "Akshit Srijan",
+    "email": "akshit.srijan@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "verilog-builder",
+      "source": ".",
+      "description": "Module-by-module Vivado synthesis with live progress, timing analysis, and prompt-driven fixes.",
+      "version": "0.1.0"
+    }
+  ]
+}
