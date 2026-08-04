@@ -14,7 +14,10 @@ Project argument: `$ARGUMENTS`
 
 2. **Start the build.** Call `start_build` with the resolved project path. Ask the user
    whether they want `mode="synth"` (synthesis + timing only, faster) or `mode="full"`
-   (adds implementation/routing) if not obvious from context — default to `synth`.
+   (adds implementation/routing) if not obvious from context — default to `synth`. Also
+   default `gui=true` (opens a persistent Vivado GUI window that updates to show each
+   module's schematic as it finishes, then the final run) unless the user says they're
+   headless or don't want it, in which case pass `gui=false`.
 
 3. **Stream live progress.** Loop calling `get_build_status` (its built-in `wait_seconds`
    paces the polling for you — no need to add your own delay). Each time, render a compact
@@ -26,6 +29,12 @@ Project argument: `$ARGUMENTS`
    - Don't repeat the full checklist every single poll if nothing changed — only re-render
      when phase, current_module, or a module's status changes, but do show fresh log_tail
      lines each time so it feels live.
+   - If the user asks to change something mid-build even though nothing has failed, tell
+     them to run `/verilog-modify` (or just say what they want changed and you can call
+     `pause_build` yourself) rather than editing the source file while Vivado still has the
+     project open for the current module.
+   - If `status` becomes `"paused"` (from a `/verilog-modify` pause elsewhere), report that
+     and stop this loop — don't treat it like an error.
 
 4. **On `status == "blocked"`:** call `get_blocking_issue`. Show the user:
    - which module/file failed and the Vivado error text.

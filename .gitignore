@@ -1,3 +1,5 @@
 mcp_server/venv/
 __pycache__/
 *.pyc
+.Xil/
+*.str
