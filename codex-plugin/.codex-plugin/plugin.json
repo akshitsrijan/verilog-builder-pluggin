@@ -1,0 +1,25 @@
+{
+  "name": "codex",
+  "version": "0.1.0",
+  "description": "Drives Vivado synthesis module-by-module, streams live progress and timing analysis, and supports prompt-driven fixes.",
+  "author": {
+    "name": "Akshit Srijan"
+  },
+  "keywords": ["verilog", "fpga", "vivado", "synthesis", "timing-analysis", "hardware"],
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Verilog Builder",
+    "shortDescription": "Build, debug, simulate, and analyze Vivado designs.",
+    "longDescription": "A Vivado workflow for creating projects, synthesizing module-by-module, investigating failures, checking timing, and generating waveforms.",
+    "developerName": "Akshit Srijan",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Build my Vivado project and show live progress.",
+      "Create a new Verilog project for a design I describe.",
+      "Analyze timing for my Vivado project."
+    ],
+    "brandColor": "#6B4EFF"
+  }
+}
