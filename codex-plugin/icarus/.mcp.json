@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "iverilog-builder": {
+      "command": "python",
+      "args": ["${CODEX_PLUGIN_ROOT}/mcp_server/server.py"]
+    }
+  }
+}

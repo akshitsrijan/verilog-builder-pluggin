@@ -1,0 +1,12 @@
+{
+  "name": "verilog-builder-icarus",
+  "version": "0.1.0",
+  "description": "Write, build, and simulate Verilog with the open-source Icarus toolchain (iverilog + vvp) - describe a module in English, get RTL on disk, built and simulated module-by-module with pause-to-fix on errors.",
+  "author": {
+    "name": "Akshit Srijan",
+    "email": "akshit.srijan@gmail.com"
+  },
+  "keywords": ["verilog", "icarus", "iverilog", "vvp", "simulation", "open-source", "hardware", "rtl"],
+  "commands": "./commands",
+  "mcpServers": "./.mcp.json"
+}

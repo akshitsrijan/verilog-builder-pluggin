@@ -1,0 +1,16 @@
+{
+  "name": "verilog-builder-icarus-marketplace",
+  "description": "Marketplace hosting the verilog-builder-icarus plugin for prompt-driven Verilog design, build, and simulation on the open-source Icarus toolchain.",
+  "owner": {
+    "name": "Akshit Srijan",
+    "email": "akshit.srijan@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "verilog-builder-icarus",
+      "source": ".",
+      "description": "Prompt-driven Verilog authoring, module-by-module iverilog builds, and vvp simulation - no vendor toolchain required.",
+      "version": "0.1.0"
+    }
+  ]
+}

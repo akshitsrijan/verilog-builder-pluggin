@@ -1,5 +1,21 @@
-mcp_server/venv/
+# Python virtualenvs (each plugin's mcp_server carries its own)
+venv/
 __pycache__/
 *.pyc
+
+# Node
+node_modules/
+
+# VS Code extension test sandbox
+.vscode-test/
+
+# Vivado / Xilinx scratch output
 .Xil/
 *.str
+*.jou
+*.log
+
+# Icarus build products (generated per project, not source)
+build/
+*.vvp
+*.vcd

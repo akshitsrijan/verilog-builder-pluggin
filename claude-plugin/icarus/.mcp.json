@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "iverilog-builder": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/mcp_server/venv/bin/python",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp_server/server.py"],
+      "env": {
+        "IVERILOG_BIN": "/usr/bin/iverilog",
+        "VVP_BIN": "/usr/bin/vvp"
+      }
+    }
+  }
+}

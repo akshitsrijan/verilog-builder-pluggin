@@ -1,0 +1,25 @@
+{
+  "name": "verilog-builder-icarus",
+  "version": "0.1.0",
+  "description": "Builds Verilog designs with Icarus Verilog module-by-module, streams live progress, runs simulations, and supports prompt-driven fixes.",
+  "author": {
+    "name": "Akshit Srijan"
+  },
+  "keywords": ["verilog", "icarus", "iverilog", "simulation", "vvp", "open-source", "hardware"],
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Verilog Builder (Icarus)",
+    "shortDescription": "Write, build, debug, and simulate Verilog with Icarus Verilog.",
+    "longDescription": "An open-source Verilog workflow built on Icarus Verilog: describe a module in English and have it written for you, build the design module-by-module with live progress, investigate and fix compile errors mid-build, and run simulations that produce VCD waveforms. No FPGA vendor tooling required.",
+    "developerName": "Akshit Srijan",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Create a new Icarus Verilog project for a design I describe.",
+      "Build my Icarus Verilog project and show live progress.",
+      "Simulate my design with Icarus Verilog and show the output."
+    ],
+    "brandColor": "#6B4EFF"
+  }
+}

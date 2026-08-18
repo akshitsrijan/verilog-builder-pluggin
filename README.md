@@ -16,6 +16,10 @@ The same orchestration logic is packaged for three frontends:
   MCP server, Tcl assets, and skills.
 - **[`vebu/`](vebu/README.md)** — a VS Code extension that talks to the same
   `mcp_server` orchestrator, for driving builds without leaving the editor.
+- **Icarus Verilog edition** — the same workflow on a fully open-source
+  toolchain, packaged for both frontends:
+  [`claude-plugin/icarus/`](claude-plugin/icarus/README.md) and
+  [`codex-plugin/icarus/`](codex-plugin/icarus/README.md).
 
 ## What it does
 
@@ -63,6 +67,39 @@ The Codex plugin lives in [`codex-plugin/`](codex-plugin/). Its main components:
   [`codex-plugin/tcl/`](codex-plugin/tcl/) — the Vivado backend.
 
 For an end-to-end example, see the [Codex walkthrough](codex-plugin/WALKTHROUGH.md).
+
+## Icarus Verilog edition
+
+A vendor-free port of the same product, for people without a Vivado licence. It
+keeps the prompt-driven workflow — describe a module, get RTL on disk, build
+module-by-module, pause-to-fix on errors — and swaps the toolchain:
+
+| Job | Vivado edition | Icarus edition |
+|---|---|---|
+| Compile / elaborate | `vivado` synth | `iverilog` |
+| Simulate | Vivado simulator | `vvp` |
+| Schematic view | Open Elaborated Design | `yosys` + `netlistsvg` |
+| Waveform view | Vivado waveform window | `.vcd` + `.gtkw` + GTKWave |
+| Timing (WNS/TNS) | yes | no — nothing places or routes |
+
+Requirements: `sudo apt install iverilog gtkwave yosys graphviz` plus
+`sudo npm install -g netlistsvg`. No vendor tooling and no licence.
+
+Both ports expose the same seven workflows — `iverilog-new`, `iverilog-build`,
+`iverilog-status`, `iverilog-fix`, `iverilog-modify`, `iverilog-waveform`, and
+`iverilog-schematic` — as slash commands in
+[`claude-plugin/icarus/commands/`](claude-plugin/icarus/commands/) and as skills
+in [`codex-plugin/icarus/skills/`](codex-plugin/icarus/skills/), backed by an
+`iverilog-builder` MCP server in each port's `mcp_server/`.
+
+Documentation:
+
+- [Beginner tutorial](docs/icarus/beginner-tutorial.md) — install the toolchain
+  and go from a prompt to a waveform and a schematic in one sitting.
+- [Pipeline and flow diagrams](docs/icarus/pipeline.md) — what runs when, the
+  build state machine, and the files a project accumulates.
+- Port READMEs: [Claude Code](claude-plugin/icarus/README.md) ·
+  [Codex](codex-plugin/icarus/README.md).
 
 ## Build lifecycle
 
