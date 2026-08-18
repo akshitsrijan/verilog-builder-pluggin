@@ -1,11 +1,21 @@
 # Verilog Builder
 
-Verilog Builder is a local Vivado workflow that lets an AI assistant create FPGA projects, build designs module-by-module, stream synthesis progress, inspect timing, pause safely for RTL changes, and generate simulation waveforms.
+Verilog Builder is a local FPGA workflow that lets an AI assistant create
+projects, build designs module-by-module, stream synthesis progress, inspect
+timing, pause safely for RTL changes, and generate simulation waveforms — all
+by prompting, with no manual GUI steps.
 
-It contains two editions that share the same Vivado orchestration logic:
+## Editions
 
-- `commands/`, `.claude-plugin/`, `mcp_server/`, and `tcl/` — the Claude Code plugin.
-- [`codex/`](codex/) — the Codex plugin, with its own MCP server, Tcl assets, and skills.
+The same orchestration logic is packaged for three frontends:
+
+- **[`claude-plugin/`](claude-plugin/README.md)** — the Claude Code plugin
+  (and standalone MCP server) that started this project. Exposes the workflow
+  as slash commands, and works from Claude Desktop too.
+- **[`codex-plugin/`](codex-plugin/README.md)** — the Codex port, with its own
+  MCP server, Tcl assets, and skills.
+- **[`vebu/`](vebu/README.md)** — a VS Code extension that talks to the same
+  `mcp_server` orchestrator, for driving builds without leaving the editor.
 
 ## What it does
 
@@ -18,25 +28,14 @@ It contains two editions that share the same Vivado orchestration logic:
 
 ## Requirements
 
-- Xilinx Vivado installed locally and available as `vivado` on your `PATH`, or configured through the `VIVADO_BIN` environment variable.
+- Xilinx Vivado installed locally and available as `vivado` on your `PATH`, or
+  configured through the `VIVADO_BIN` environment variable.
 - Python 3 with the `mcp` package available to the selected MCP-server interpreter.
-
-## Codex edition
-
-The Codex plugin lives in [`codex/`](codex/). Its main components are:
-
-- [`codex/.codex-plugin/plugin.json`](codex/.codex-plugin/plugin.json) — plugin metadata.
-- [`codex/.mcp.json`](codex/.mcp.json) — local MCP server configuration.
-- [`codex/skills/`](codex/skills/) — seven assistant workflows:
-  `verilog-new`, `verilog-build`, `verilog-status`, `verilog-timing`,
-  `verilog-fix`, `verilog-modify`, and `generate-waveform`.
-- [`codex/mcp_server/`](codex/mcp_server/) and [`codex/tcl/`](codex/tcl/) — the Vivado backend.
-
-For an end-to-end example, see the [Codex walkthrough](codex/WALKTHROUGH.md).
 
 ## Claude Code edition
 
-The original Claude Code edition exposes the same workflow as slash commands:
+Installed from [`claude-plugin/`](claude-plugin/), it exposes the workflow as
+slash commands:
 
 ```text
 /verilog-new
@@ -47,6 +46,23 @@ The original Claude Code edition exposes the same workflow as slash commands:
 /verilog-modify
 /generate_waveform
 ```
+
+Its backend lives in [`claude-plugin/mcp_server/`](claude-plugin/mcp_server/)
+and [`claude-plugin/tcl/`](claude-plugin/tcl/).
+
+## Codex edition
+
+The Codex plugin lives in [`codex-plugin/`](codex-plugin/). Its main components:
+
+- [`codex-plugin/.codex-plugin/plugin.json`](codex-plugin/.codex-plugin/plugin.json) — plugin metadata.
+- [`codex-plugin/.mcp.json`](codex-plugin/.mcp.json) — local MCP server configuration.
+- [`codex-plugin/skills/`](codex-plugin/skills/) — seven assistant workflows:
+  `verilog-new`, `verilog-build`, `verilog-status`, `verilog-timing`,
+  `verilog-fix`, `verilog-modify`, and `generate-waveform`.
+- [`codex-plugin/mcp_server/`](codex-plugin/mcp_server/) and
+  [`codex-plugin/tcl/`](codex-plugin/tcl/) — the Vivado backend.
+
+For an end-to-end example, see the [Codex walkthrough](codex-plugin/WALKTHROUGH.md).
 
 ## Build lifecycle
 
