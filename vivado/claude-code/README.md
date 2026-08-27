@@ -46,13 +46,13 @@ in plain language (Claude will call the tools directly).
 From this directory (or after pushing it to a git remote):
 
 ```
-/plugin marketplace add /home/vboxuser/verilog-builder-pluggin/claude-plugin
+/plugin marketplace add /home/vboxuser/verilog-builder-pluggin/vivado/claude-code
 /plugin install verilog-builder@verilog-builder-marketplace
 ```
 
 If you push this repo to GitHub, `.claude-plugin/marketplace.json` needs to
 be discoverable at the root of whatever you point `/plugin marketplace add`
-at — since it now lives under `claude-plugin/`, check the current Claude
+at — since it now lives under `vivado/claude-code/`, check the current Claude
 Code docs for how your version resolves a subdirectory of a GitHub repo
 (some versions need the subdirectory pushed/mirrored as its own repo, or
 support a path suffix).
@@ -79,8 +79,8 @@ Desktop MCP config (Settings -> Developer -> Edit Config), merging into
 {
   "mcpServers": {
     "verilog-builder": {
-      "command": "/home/vboxuser/verilog-builder-pluggin/claude-plugin/mcp_server/venv/bin/python",
-      "args": ["/home/vboxuser/verilog-builder-pluggin/claude-plugin/mcp_server/server.py"],
+      "command": "/home/vboxuser/verilog-builder-pluggin/vivado/claude-code/mcp_server/venv/bin/python",
+      "args": ["/home/vboxuser/verilog-builder-pluggin/vivado/claude-code/mcp_server/server.py"],
       "env": {
         "VIVADO_BIN": "/home/vboxuser/Downloads/Xilinx/Vivado/2023.2/bin/vivado"
       }

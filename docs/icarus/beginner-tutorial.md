@@ -61,14 +61,15 @@ mcp_server/venv/bin/pip install -r mcp_server/requirements.txt
 **Claude Code.** From inside Claude Code:
 
 ```text
-/plugin marketplace add <repo>/claude-plugin/icarus
+/plugin marketplace add <your_folder>/icarus/claude-code
 /plugin install verilog-builder-icarus
 ```
 
-`<repo>` is wherever you cloned this repository.
+Throughout this tutorial `<your_folder>` stands for a path on your own machine —
+here, wherever you cloned this repository; later, wherever your project lives.
 
-**Codex.** Install `codex-plugin/icarus/` as a Codex plugin; its
-`.codex-plugin/plugin.json` wires up the skills and the MCP server for you.
+**Codex.** Install `icarus/codex/` as a Codex plugin; its
+`.vivado/codex/plugin.json` wires up the skills and the MCP server for you.
 
 Either way the plugin brings its own **MCP server** — a small background program
 named `iverilog-builder` that exposes "compile this", "simulate that", "draw a
@@ -95,7 +96,7 @@ This is the whole workflow. You describe; it builds.
 Verilog it wrote for you. On disk you now have:
 
 ```text
-~/counter_demo/
+<your_folder>/counter_demo/
   .ivproj.json          the project manifest — this IS the project
   sources/counter.v     your design
 ```
@@ -254,7 +255,7 @@ which returns cell counts by type — for our counter, one `$add`, one `$dff`, o
 ## 7. Where everything ended up
 
 ```text
-~/counter_demo/
+<your_folder>/counter_demo/
   .ivproj.json
   sources/
     counter.v
@@ -293,7 +294,7 @@ remote has X11 forwarding enabled.)
 `netlistsvg` isn't installed, so the plugin silently fell back to graphviz. That
 fallback is functional but far less readable. Fix it with
 `sudo npm install -g netlistsvg`, then check `which netlistsvg`. If it's
-installed somewhere unusual, set `NETLISTSVG_BIN=/path/to/netlistsvg` in the
+installed somewhere unusual, set `NETLISTSVG_BIN=<your_folder>/netlistsvg` in the
 plugin's `.mcp.json` — the same trick works for `IVERILOG_BIN`, `VVP_BIN`,
 `YOSYS_BIN`, `GTKWAVE_BIN` and `DOT_BIN`.
 
@@ -324,7 +325,7 @@ source file wasn't registered with the project. Ask:
 
 and then add the missing file:
 
-> **You:** add `~/counter_demo/sources/full_adder.v` to the project
+> **You:** add `<your_folder>/counter_demo/sources/full_adder.v` to the project
 
 This also happens when the top module is wrong. Say
 "set the top module to `counter`" and rebuild.
@@ -337,7 +338,7 @@ That is why the build lints each file alone first. Look at the per-module log:
 **"No project found."**
 Every tool needs a directory containing a `.ivproj.json`. If you moved things
 around, point at the directory explicitly ("use the project at
-`~/counter_demo`"), or run `list projects` to see what the plugin can find — it
+`<your_folder>/counter_demo`"), or run `list projects` to see what the plugin can find — it
 searches two levels below your home directory.
 
 **Changes to a `.v` file don't seem to take effect.**
@@ -356,8 +357,8 @@ editing a file by hand.
 - Read [the pipeline document](pipeline.md) for the diagrams of exactly what runs
   when, and the build state machine.
 - Full tool and command reference:
-  [Claude Code port](../../claude-plugin/icarus/README.md) ·
-  [Codex port](../../codex-plugin/icarus/README.md).
+  [Claude Code port](../../icarus/claude-code/README.md) ·
+  [Codex port](../../icarus/codex/README.md).
 
 One thing this edition deliberately does **not** do: timing analysis. There is no
 WNS/TNS/WHS/THS here, because nothing places or routes your design onto a real

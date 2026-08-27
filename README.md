@@ -9,17 +9,17 @@ by prompting, with no manual GUI steps.
 
 The same orchestration logic is packaged for three frontends:
 
-- **[`claude-plugin/`](claude-plugin/README.md)** — the Claude Code plugin
+- **[`vivado/claude-code/`](vivado/claude-code/README.md)** — the Claude Code plugin
   (and standalone MCP server) that started this project. Exposes the workflow
   as slash commands, and works from Claude Desktop too.
-- **[`codex-plugin/`](codex-plugin/README.md)** — the Codex port, with its own
+- **[`vivado/codex/`](vivado/codex/README.md)** — the Codex port, with its own
   MCP server, Tcl assets, and skills.
 - **[`vebu/`](vebu/README.md)** — a VS Code extension that talks to the same
   `mcp_server` orchestrator, for driving builds without leaving the editor.
 - **Icarus Verilog edition** — the same workflow on a fully open-source
   toolchain, packaged for both frontends:
-  [`claude-plugin/icarus/`](claude-plugin/icarus/README.md) and
-  [`codex-plugin/icarus/`](codex-plugin/icarus/README.md).
+  [`icarus/claude-code/`](icarus/claude-code/README.md) and
+  [`icarus/codex/`](icarus/codex/README.md).
 
 ## What it does
 
@@ -38,7 +38,7 @@ The same orchestration logic is packaged for three frontends:
 
 ## Claude Code edition
 
-Installed from [`claude-plugin/`](claude-plugin/), it exposes the workflow as
+Installed from [`vivado/claude-code/`](vivado/claude-code/), it exposes the workflow as
 slash commands:
 
 ```text
@@ -51,22 +51,22 @@ slash commands:
 /generate_waveform
 ```
 
-Its backend lives in [`claude-plugin/mcp_server/`](claude-plugin/mcp_server/)
-and [`claude-plugin/tcl/`](claude-plugin/tcl/).
+Its backend lives in [`vivado/claude-code/mcp_server/`](vivado/claude-code/mcp_server/)
+and [`vivado/claude-code/tcl/`](vivado/claude-code/tcl/).
 
 ## Codex edition
 
-The Codex plugin lives in [`codex-plugin/`](codex-plugin/). Its main components:
+The Codex plugin lives in [`vivado/codex/`](vivado/codex/). Its main components:
 
-- [`codex-plugin/.codex-plugin/plugin.json`](codex-plugin/.codex-plugin/plugin.json) — plugin metadata.
-- [`codex-plugin/.mcp.json`](codex-plugin/.mcp.json) — local MCP server configuration.
-- [`codex-plugin/skills/`](codex-plugin/skills/) — seven assistant workflows:
+- [`vivado/codex/.vivado/codex/plugin.json`](vivado/codex/.vivado/codex/plugin.json) — plugin metadata.
+- [`vivado/codex/.mcp.json`](vivado/codex/.mcp.json) — local MCP server configuration.
+- [`vivado/codex/skills/`](vivado/codex/skills/) — seven assistant workflows:
   `verilog-new`, `verilog-build`, `verilog-status`, `verilog-timing`,
   `verilog-fix`, `verilog-modify`, and `generate-waveform`.
-- [`codex-plugin/mcp_server/`](codex-plugin/mcp_server/) and
-  [`codex-plugin/tcl/`](codex-plugin/tcl/) — the Vivado backend.
+- [`vivado/codex/mcp_server/`](vivado/codex/mcp_server/) and
+  [`vivado/codex/tcl/`](vivado/codex/tcl/) — the Vivado backend.
 
-For an end-to-end example, see the [Codex walkthrough](codex-plugin/WALKTHROUGH.md).
+For an end-to-end example, see the [Codex walkthrough](vivado/codex/WALKTHROUGH.md).
 
 ## Icarus Verilog edition
 
@@ -88,8 +88,8 @@ Requirements: `sudo apt install iverilog gtkwave yosys graphviz` plus
 Both ports expose the same seven workflows — `iverilog-new`, `iverilog-build`,
 `iverilog-status`, `iverilog-fix`, `iverilog-modify`, `iverilog-waveform`, and
 `iverilog-schematic` — as slash commands in
-[`claude-plugin/icarus/commands/`](claude-plugin/icarus/commands/) and as skills
-in [`codex-plugin/icarus/skills/`](codex-plugin/icarus/skills/), backed by an
+[`icarus/claude-code/commands/`](icarus/claude-code/commands/) and as skills
+in [`icarus/codex/skills/`](icarus/codex/skills/), backed by an
 `iverilog-builder` MCP server in each port's `mcp_server/`.
 
 Documentation:
@@ -98,8 +98,8 @@ Documentation:
   and go from a prompt to a waveform and a schematic in one sitting.
 - [Pipeline and flow diagrams](docs/icarus/pipeline.md) — what runs when, the
   build state machine, and the files a project accumulates.
-- Port READMEs: [Claude Code](claude-plugin/icarus/README.md) ·
-  [Codex](codex-plugin/icarus/README.md).
+- Port READMEs: [Claude Code](icarus/claude-code/README.md) ·
+  [Codex](icarus/codex/README.md).
 
 ## Build lifecycle
 

@@ -186,5 +186,5 @@ regenerable and is a reasonable thing to `.gitignore`.
 ## Where to go next
 
 - [Beginner tutorial](beginner-tutorial.md) — zero to waveform in one sitting.
-- [Claude Code port README](../../claude-plugin/icarus/README.md)
-- [Codex port README](../../codex-plugin/icarus/README.md)
+- [Claude Code port README](../../icarus/claude-code/README.md)
+- [Codex port README](../../icarus/codex/README.md)

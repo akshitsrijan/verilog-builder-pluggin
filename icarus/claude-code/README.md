@@ -37,7 +37,7 @@ and then `PATH`. Set them in `.mcp.json` to retarget the toolchain.
 From Claude Code:
 
 ```text
-/plugin marketplace add <repo>/claude-plugin/icarus
+/plugin marketplace add <your_folder>/icarus/claude-code
 /plugin install verilog-builder-icarus
 ```
 
