@@ -46,7 +46,8 @@ in plain language (Claude will call the tools directly).
 From this directory (or after pushing it to a git remote):
 
 ```
-/plugin marketplace add /home/vboxuser/verilog-builder-pluggin/vivado/claude-code
+/plugin marketplace add /path/to/verilog-builder-pluggin/vivado/claude-code
+
 /plugin install verilog-builder@verilog-builder-marketplace
 ```
 
@@ -79,10 +80,10 @@ Desktop MCP config (Settings -> Developer -> Edit Config), merging into
 {
   "mcpServers": {
     "verilog-builder": {
-      "command": "/home/vboxuser/verilog-builder-pluggin/vivado/claude-code/mcp_server/venv/bin/python",
-      "args": ["/home/vboxuser/verilog-builder-pluggin/vivado/claude-code/mcp_server/server.py"],
+      "command": "/path/to/verilog-builder-pluggin/vivado/claude-code/mcp_server/venv/bin/python",
+      "args": ["/path/to/verilog-builder-pluggin/vivado/claude-code/mcp_server/server.py"],
       "env": {
-        "VIVADO_BIN": "/home/vboxuser/Downloads/Xilinx/Vivado/2023.2/bin/vivado"
+        "VIVADO_BIN": "/path/to/Xilinx/Vivado/2023.2/bin/vivado"
       }
     }
   }
@@ -162,7 +163,7 @@ show me progress"* — see [Install: Claude Desktop](#install-claude-desktop) be
 ## Requirements
 
 - Vivado 2023.2 installed locally (default expected at
-  `/home/vboxuser/Downloads/Xilinx/Vivado/2023.2/bin/vivado`; override via
+  `/path/to/Xilinx/Vivado/2023.2/bin/vivado`; override via
   the `VIVADO_BIN` env var in `.mcp.json` / `claude_desktop_config.json`).
 - Python 3 with the `mcp` package (already set up in `mcp_server/venv/` by
   the scaffolding step; recreate with `python3 -m venv venv && ./venv/bin/pip

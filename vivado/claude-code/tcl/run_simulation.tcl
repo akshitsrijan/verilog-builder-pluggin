@@ -58,14 +58,27 @@ if {[catch {launch_simulation} err]} {
 
 # log_wave marks signals to actually be written to the waveform database -
 # without this, the simulation still runs but nothing gets recorded.
-if {[catch {log_wave -recursive *} err]} {
+if {[catch {log_wave -recursive /*} err]} {
     puts "WAVEFORM_ERROR: log_wave failed: $err"
     catch {close_sim}
     catch {close_project}
     exit 1
 }
 
-set sim_dir [get_property DIRECTORY [current_sim]]
+# [current_sim] (class xsim_simulation) has no DIRECTORY property on this
+# Vivado version - the simulation working dir is deterministic instead:
+# <project_dir>/<project_name>.sim/<simset_name>/behav/xsim
+if {[catch {
+    set proj_dir  [get_property DIRECTORY [current_project]]
+    set proj_name [get_property NAME [current_project]]
+    set simset    [get_property NAME [current_fileset -simset]]
+    set sim_dir   [file join $proj_dir "${proj_name}.sim" $simset "behav" "xsim"]
+} err]} {
+    puts "WAVEFORM_ERROR: failed to get sim directory: $err"
+    catch {close_sim}
+    catch {close_project}
+    exit 1
+}
 
 if {[catch {run $sim_time} err]} {
     puts "WAVEFORM_ERROR: run failed: $err"

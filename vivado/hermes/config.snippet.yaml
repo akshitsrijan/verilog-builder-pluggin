@@ -1,0 +1,7 @@
+# Merge into ~/.hermes/config.yaml, then run /reload-mcp (or restart Hermes).
+mcp_servers:
+  verilog-builder:
+    command: "python3"
+    args: ["/ABSOLUTE/PATH/TO/vivado/hermes/mcp_server/server.py"]
+    env:
+      VIVADO_BIN: "vivado"   # or full path, e.g. /path/to/Xilinx/Vivado/2023.2/bin/vivado

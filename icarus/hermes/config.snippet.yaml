@@ -1,0 +1,5 @@
+# Merge into ~/.hermes/config.yaml, then run /reload-mcp (or restart Hermes).
+mcp_servers:
+  iverilog-builder:
+    command: "python3"
+    args: ["/ABSOLUTE/PATH/TO/icarus/hermes/mcp_server/server.py"]

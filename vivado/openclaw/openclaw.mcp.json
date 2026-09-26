@@ -1,0 +1,11 @@
+{
+  "mcp": {
+    "servers": {
+      "verilog-builder": {
+        "command": "python3",
+        "args": ["/ABSOLUTE/PATH/TO/vivado/openclaw/mcp_server/server.py"],
+        "env": { "VIVADO_BIN": "vivado" }
+      }
+    }
+  }
+}

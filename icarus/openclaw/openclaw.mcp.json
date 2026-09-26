@@ -1,0 +1,10 @@
+{
+  "mcp": {
+    "servers": {
+      "iverilog-builder": {
+        "command": "python3",
+        "args": ["/ABSOLUTE/PATH/TO/icarus/openclaw/mcp_server/server.py"]
+      }
+    }
+  }
+}

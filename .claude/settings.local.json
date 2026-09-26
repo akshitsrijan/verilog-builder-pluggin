@@ -1,7 +1,4 @@
 {
-  "disabledMcpjsonServers": [
-    "verilog-builder"
-  ],
   "permissions": {
     "allow": [
       "mcp__plugin_verilog-builder_verilog-builder__get_build_status"

@@ -14,12 +14,17 @@ The same orchestration logic is packaged for three frontends:
   as slash commands, and works from Claude Desktop too.
 - **[`vivado/codex/`](vivado/codex/README.md)** — the Codex port, with its own
   MCP server, Tcl assets, and skills.
+- **[`vivado/hermes/`](vivado/hermes/README.md)** and
+  **[`vivado/openclaw/`](vivado/openclaw/README.md)** — Hermes Agent and OpenClaw
+  ports (MCP server + skills).
 - **[`vebu/`](vebu/README.md)** — a VS Code extension that talks to the same
   `mcp_server` orchestrator, for driving builds without leaving the editor.
 - **Icarus Verilog edition** — the same workflow on a fully open-source
   toolchain, packaged for both frontends:
   [`icarus/claude-code/`](icarus/claude-code/README.md) and
-  [`icarus/codex/`](icarus/codex/README.md).
+  [`icarus/codex/`](icarus/codex/README.md), plus Hermes and OpenClaw ports in
+  [`icarus/hermes/`](icarus/hermes/README.md) and
+  [`icarus/openclaw/`](icarus/openclaw/README.md).
 
 ## What it does
 

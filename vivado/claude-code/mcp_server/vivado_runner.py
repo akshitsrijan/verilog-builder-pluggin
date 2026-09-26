@@ -179,13 +179,22 @@ def _gui_show_full(project_xpr: str, run_name: str):
     return _gui_send(project_xpr, f"FULL {run_name}", timeout=6.0)
 
 
-def _gui_send_retry(project_xpr: str, command: str, attempts: int = 15,
-                     delay: float = 2.0, timeout: float = 5.0) -> str:
+def _gui_send_retry(project_xpr: str, command: str, attempts: int = 30,
+                     delay: float = 3.0, timeout: float = 5.0) -> str:
     """Like _gui_send, but retries for a freshly-launched GUI process whose
     socket listener hasn't come up yet (a cold Vivado GUI start can take
-    10-30s, unlike mid-build calls where the listener is already warm)."""
+    10-30s, unlike mid-build calls where the listener is already warm).
+    Also detects a listener that has died (e.g. crashed/segfaulted) and
+    relaunches it once instead of retrying against a dead process for the
+    whole budget."""
     reply = "ERROR: gui never became ready"
+    relaunched = False
     for _ in range(attempts):
+        with _gui_lock:
+            info = _gui_procs.get(project_xpr)
+        if info and info["proc"].poll() is not None and not relaunched:
+            relaunched = True
+            _ensure_gui_listener(project_xpr, {})
         reply = _gui_send(project_xpr, command, timeout=timeout)
         if not reply.startswith("ERROR"):
             return reply

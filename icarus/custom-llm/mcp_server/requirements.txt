@@ -1,0 +1,2 @@
+# Matches the mcp version the sibling Vivado plugin runs against.
+mcp>=1.2,<2

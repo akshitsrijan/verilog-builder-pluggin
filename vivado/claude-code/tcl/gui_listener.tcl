@@ -75,6 +75,16 @@ proc dispatch {line} {
         if {[catch {open_wave_database $wdb} err]} {
             return "ERROR: open_wave_database failed: $err"
         }
+        # open_wave_database alone opens an empty wave window - no signals
+        # are displayed until they're explicitly added to it. There's no
+        # .wcfg (write_wave_config is GUI-only and unavailable when the
+        # simulation itself was run in batch mode), so populate the wave
+        # window directly with every logged signal.
+        catch {
+            set wave_win [current_wave_config]
+            add_wave -recursive /
+        }
+        catch {save_wave_config -force [file rootname $wdb].wcfg}
         return "OK: showing waveform $wdb"
     }
 
