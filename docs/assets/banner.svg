@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0614"/><stop offset="0.55" stop-color="#150a2e"/><stop offset="1" stop-color="#06222b"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff3cac"><animate attributeName="stop-color" values="#ff3cac;#22d3ee;#a3e635;#ff3cac" dur="8s" repeatCount="indefinite"/></stop>
+      <stop offset="0.5" stop-color="#a78bfa"><animate attributeName="stop-color" values="#a78bfa;#ff3cac;#22d3ee;#a78bfa" dur="8s" repeatCount="indefinite"/></stop>
+      <stop offset="1" stop-color="#22d3ee"><animate attributeName="stop-color" values="#22d3ee;#a3e635;#ff3cac;#22d3ee" dur="8s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+    <radialGradient id="blobA"><stop offset="0" stop-color="#ff3cac" stop-opacity="0.45"/><stop offset="1" stop-color="#ff3cac" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blobB"><stop offset="0" stop-color="#22d3ee" stop-opacity="0.40"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="clip"><rect width="1280" height="440" rx="0"/></clipPath>
+    <path id="t1" d="M700 100H820V150H940"/>
+    <path id="t2" d="M700 220H940"/>
+    <path id="t3" d="M700 340H820V290H940"/>
+    <path id="t4" d="M1100 150H1180V100H1280"/>
+    <path id="t5" d="M1100 220H1280"/>
+    <path id="t6" d="M1100 290H1180V340H1280"/>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="1280" height="440" fill="url(#bg)"/>
+
+    <!-- drifting color blobs -->
+    <circle r="260" fill="url(#blobA)">
+      <animate attributeName="cx" values="180;420;180" dur="14s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="80;300;80" dur="11s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="280" fill="url(#blobB)">
+      <animate attributeName="cx" values="1100;880;1100" dur="13s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="380;120;380" dur="10s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- scrolling grid -->
+    <rect x="0" y="-40" width="1280" height="520" fill="url(#grid)">
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 40" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- floating sparkles -->
+    <g fill="#fff" font-family="monospace" font-size="20" opacity="0.8">
+      <text x="640" y="60">✦<animate attributeName="opacity" values="0.1;1;0.1" dur="2.4s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -14;0 0" dur="5s" repeatCount="indefinite"/></text>
+      <text x="40" y="410" fill="#22d3ee">✧<animate attributeName="opacity" values="1;0.1;1" dur="3s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -18;0 0" dur="6s" repeatCount="indefinite"/></text>
+      <text x="1230" y="50" fill="#ff3cac">✦<animate attributeName="opacity" values="0.2;1;0.2" dur="1.9s" repeatCount="indefinite"/></text>
+      <text x="600" y="410" fill="#a3e635">+<animate attributeName="opacity" values="1;0.2;1" dur="2.2s" repeatCount="indefinite"/></text>
+    </g>
+
+    <!-- circuit traces -->
+    <g fill="none" stroke="#22d3ee" stroke-width="2" opacity="0.4">
+      <use href="#t1"/><use href="#t2"/><use href="#t3"/><use href="#t4"/><use href="#t5"/><use href="#t6"/>
+    </g>
+    <!-- data packets flowing in then out -->
+    <g filter="url(#glow)">
+      <circle r="5" fill="#ff3cac"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#t1"/></animateMotion></circle>
+      <circle r="5" fill="#a3e635"><animateMotion dur="2s" repeatCount="indefinite" begin="0.4s"><mpath href="#t2"/></animateMotion></circle>
+      <circle r="5" fill="#22d3ee"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.8s"><mpath href="#t3"/></animateMotion></circle>
+      <circle r="5" fill="#a3e635"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.2s"><mpath href="#t4"/></animateMotion></circle>
+      <circle r="5" fill="#ff3cac"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0.2s"><mpath href="#t5"/></animateMotion></circle>
+      <circle r="5" fill="#22d3ee"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s"><mpath href="#t6"/></animateMotion></circle>
+    </g>
+
+    <!-- chip (pulsing) -->
+    <g>
+      <g stroke="#cbd5e1" stroke-width="5" stroke-linecap="round" opacity="0.8">
+        <path d="M975 130v-26M1015 130v-26M1055 130v-26M1095 130v-26"/>
+        <path d="M975 310v26M1015 310v26M1055 310v26M1095 310v26"/>
+      </g>
+      <rect x="940" y="130" width="160" height="180" rx="22" fill="#0d0820" stroke="url(#neon)" stroke-width="4" filter="url(#glow)">
+        <animate attributeName="stroke-width" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="962" cy="152" r="5" fill="#a3e635"><animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/></circle>
+      <text x="1020" y="210" text-anchor="middle" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="30" font-weight="700" fill="url(#neon)">module</text>
+      <text x="1020" y="250" text-anchor="middle" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="20" fill="#94a3b8">endmodule</text>
+      <text x="1020" y="285" text-anchor="middle" font-family="monospace" font-size="16" fill="#a3e635">posedge clk ▲<animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></text>
+    </g>
+
+    <!-- title with glitch layers -->
+    <g font-family="'DejaVu Sans',Verdana,Arial,sans-serif" font-size="92" font-weight="900">
+      <text x="64" y="160" fill="#ff3cac" opacity="0.7">Verilog Builder
+        <animateTransform attributeName="transform" type="translate" values="0 0;-4 0;0 0;3 0;0 0" keyTimes="0;0.02;0.05;0.07;1" dur="4s" repeatCount="indefinite"/>
+      </text>
+      <text x="64" y="160" fill="#22d3ee" opacity="0.7">Verilog Builder
+        <animateTransform attributeName="transform" type="translate" values="0 0;4 0;0 0;-3 0;0 0" keyTimes="0;0.02;0.05;0.07;1" dur="4s" repeatCount="indefinite"/>
+      </text>
+      <text x="64" y="160" fill="#ffffff">Verilog Builder</text>
+    </g>
+    <rect x="64" y="182" width="120" height="6" rx="3" fill="url(#neon)">
+      <animate attributeName="width" values="120;520;120" dur="4s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- tagline: typed-in feel -->
+    <g font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="25" fill="#e9d5ff">
+      <text x="64" y="240">&gt; just prompt it. we handle the Vivado.</text>
+      <text x="64" y="278" fill="#a3e635">&gt; build · fix · sim · ship<tspan fill="#ff3cac">█<animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite"/></tspan></text>
+    </g>
+
+    <!-- pipeline pills -->
+    <g font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="18" text-anchor="middle">
+      <rect x="64" y="322" width="140" height="42" rx="21" fill="#ff3cac" fill-opacity="0.15" stroke="#ff3cac" stroke-width="1.5"/>
+      <text x="134" y="349" fill="#ffd1ec">LLM prompt</text>
+      <text x="228" y="350" fill="#a3e635" font-size="22">→<animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" repeatCount="indefinite"/></text>
+      <rect x="250" y="322" width="150" height="42" rx="21" fill="#a78bfa" fill-opacity="0.15" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="325" y="349" fill="#ede9fe">MCP server</text>
+      <text x="424" y="350" fill="#a3e635" font-size="22">→<animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></text>
+      <rect x="446" y="322" width="190" height="42" rx="21" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1.5"/>
+      <text x="541" y="349" fill="#cffafe">Vivado | Icarus</text>
+    </g>
+
+    <!-- scanline sweep -->
+    <rect x="0" width="1280" height="3" fill="#fff" opacity="0.06">
+      <animate attributeName="y" values="-5;445" dur="5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
